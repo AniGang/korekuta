@@ -25,8 +25,12 @@ app.get('/:distributor/:id', async function (req, res) {
       await page.goto('https://kitsu.io/anime/' + req.params.id);
       await page.waitFor('h3');
       break;
+    case 'mal':
+      await page.goto('https://myanimelist.net/anime/' + req.params.id);
+    case 'anidb':
+      await page.goto('https://anidb.net/a' + req.params.id);
     default:
-      res.sendStatus(400)
+      res.sendStatus(404)
   }
   
   
