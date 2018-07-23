@@ -25,13 +25,15 @@ app.get('/:distributor/:id', async function (req, res) {
   switch(req.params.distributor) {
     case 'anilist':
       await page.goto('https://anilist.co/anime/' + req.params.id)
-        .catch(error => { console.log('rejection in goto', error.message); });
+        .catch(error => { console.log('Rejection in goto for ANILIST on id', req.params.id, error.message); });
       await page.waitFor('h1', {'timeout': MAX_TIMEOUT})
-        .catch(error => { console.log('rejection in goto', error.message); });
+        .catch(error => { console.log('Rejection in waitFor for ANILIST on id', req.params.id, error.message); });
       break;
     case 'kitsu':
-      await page.goto('https://kitsu.io/anime/' + req.params.id);
-      await page.waitFor('h3');
+      await page.goto('https://kitsu.io/anime/' + req.params.id)
+        .catch(error => { console.log('Rejection in goto for KITSU on id', req.params.id, error.message); });
+      await page.waitFor('h3', {'timeout': MAX_TIMEOUT})
+        .catch(error => { console.log('Rejection in waitFor for KITSU on id', req.params.id, error.message); });
       break;
     case 'mal':
       await page.goto('https://myanimelist.net/anime/' + req.params.id);
