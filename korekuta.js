@@ -1,6 +1,6 @@
 'use strict';
 
-const MAX_TIMEOUT = 10000
+const MAX_TIMEOUT = 5000
 const puppeteer = require('puppeteer');
 
 var express = require('express')
