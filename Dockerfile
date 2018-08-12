@@ -1,4 +1,4 @@
-FROM alekzonder/puppeteer:1.5.0-0
+FROM buildkite/puppeteer:v1.7.0
 
 WORKDIR /app
 
